@@ -1,6 +1,6 @@
-﻿@page "/counter"
+﻿@page "/counter/{initialCount:int?}"
+@page "/counter2"
 @rendermode InteractiveServer
-
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
@@ -8,6 +8,8 @@
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<p class="my-4">InitialCount= @InitialCount</p>
 
 @if(currentCount > 3)
 {
@@ -17,11 +19,19 @@
 @code {
     private int currentCount = 0;
 
+    protected override void OnInitialized()
+    {
+        currentCount = InitialCount;
+    }
+
+    [Parameter]
+    public int InitialCount { get; set; }
+
     [Parameter]
     public int IncrementAmount { get; set; }
 
     private void IncrementCount()
     {
-        currentCount += IncrementAmount;
+        currentCount++;
     }
 }
