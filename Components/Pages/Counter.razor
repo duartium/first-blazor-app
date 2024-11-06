@@ -7,17 +7,38 @@
 
 <p role="status">Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="IncrementCountAsync">Click me</button>
 
 <p class="my-4">InitialCount= @InitialCount</p>
+
+<div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        Your text
+    </label>
+    <input class="my-2 p-2 border" @oninput="OnChange" placeholder="enter your text here..." />
+</div>
+
+<p class="mt-2">@text</p>
+
+<label class="p-2 rounded text-white bg-blue-800 cursor-pointer" 
+    @onmouseover="onMouseOver"
+    @onmouseout="onMouseOut">
+    Ver Banner
+</label>
+
+@if(isActiveBanner){
+    <Banner />
+}
 
 @if(currentCount > 3)
 {
     <p>You win ;)</p>
-}
 
+}
 @code {
     private int currentCount = 0;
+    string text = "";
+    bool isActiveBanner = false;
 
     protected override void OnInitialized()
     {
@@ -34,4 +55,22 @@
     {
         currentCount++;
     }
+
+    async Task IncrementCountAsync()
+    {
+        await Task.Delay(1000);
+        currentCount++;
+    }
+
+    private void OnChange(ChangeEventArgs e)
+    {
+        text = (string)e.Value!;
+    }
+
+    private void onMouseOver(MouseEventArgs e)
+    {
+        currentCount++;
+        isActiveBanner = true;
+    }
+    private void onMouseOut(MouseEventArgs e) => isActiveBanner = false;
 }
