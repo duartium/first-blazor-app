@@ -1,40 +1,50 @@
 ﻿@page "/counter/{initialCount:int?}"
 @page "/counter2"
 @rendermode InteractiveServer
+
+@using first_blazor_app.Shared.Components
+
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
+<div class="divide-y divide-dashed">
+    <div class="p-2">
+        <h1>Counter</h1>
 
-<p role="status">Current count: @currentCount</p>
+        <p role="status">Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCountAsync">Click me</button>
+        <button class="w-auto p-x bg-purple-700 text-white" @onclick="IncrementCountAsync">Click me</button>
+        @if (currentCount > 3)
+        {
+            <p>You win ;)</p>
+        }
+        <p class="my-4">InitialCount= @InitialCount</p>
+    </div>
+    <div class="p-2">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Your text
+            </label>
+            <input class="my-2 p-2 border" @oninput="OnChange" placeholder="enter your text here..." />
+        </div>
 
-<p class="my-4">InitialCount= @InitialCount</p>
-
-<div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Your text
-    </label>
-    <input class="my-2 p-2 border" @oninput="OnChange" placeholder="enter your text here..." />
+        <p class="mt-2">@text</p>
+    </div>
+    <div class="p-5">
+        <label class="p-2 rounded text-white bg-blue-800 cursor-pointer"
+               @onmouseover="onMouseOver"
+               @onmouseout="onMouseOut">
+            Ver Banner
+        </label>
+        @if (isActiveBanner)
+        {
+            <Banner />
+        }
+    </div>
+    <div class="p-2">
+        <CircularButton @onclick="() => currentCount++" />
+    </div>
 </div>
 
-<p class="mt-2">@text</p>
-
-<label class="p-2 rounded text-white bg-blue-800 cursor-pointer" 
-    @onmouseover="onMouseOver"
-    @onmouseout="onMouseOut">
-    Ver Banner
-</label>
-
-@if(isActiveBanner){
-    <Banner />
-}
-
-@if(currentCount > 3)
-{
-    <p>You win ;)</p>
-
-}
 @code {
     private int currentCount = 0;
     string text = "";
