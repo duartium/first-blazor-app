@@ -1,0 +1,18 @@
+﻿@using first_blazor_app.Core.Models.Users
+@using first_blazor_app.Shared.Components
+
+
+<div class="card bg-gray-200 w-auto shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">@User?.UserName</h2>
+        <p>ID: @User?.Id</p>
+        <p>@User?.Profile</p>
+        <div class="card-actions justify-center">
+            <button class="btn btn-primary">View Details</button>
+        </div>
+    </div>
+</div>
+@code {
+	[Parameter]
+	public User? User { get; set; }
+}

@@ -1,0 +1,8 @@
+﻿<div class="bg-gray-300 h-full w-full rounded">
+	@ChildCardContent
+</div>
+
+@code {
+	[Parameter]
+	public RenderFragment? ChildCardContent { get; set; }
+}

@@ -3,18 +3,18 @@
 <div class="relative min-h-screen md:flex" data-dev-hint="container">
     <input type="checkbox" id="menu-open" class="hidden" />
 
-    <label for="menu-open" class="absolute right-2 bottom-2 shadow-lg rounded-full p-2 bg-gray-100 text-gray-600 md:hidden" data-dev-hint="floating action button">
+    <label for="menu-open" class="right-2 bottom-2 p-2 bg-gray-100 text-gray-600 absolute rounded-full shadow-lg md:hidden" data-dev-hint="floating action button">
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </label>
 
     <header class="bg-gray-600 text-gray-100 flex justify-between md:hidden" data-dev-hint="mobile menu bar">
-        <a href="#" class="block p-4 text-white font-bold whitespace-nowrap truncate">
+        <a href="#" class="p-4 text-white block truncate whitespace-nowrap font-bold">
             Blazor Rules (-_-)
         </a>
 
-        <label for="menu-open" id="mobile-menu-button" class="m-2 p-2 focus:outline-none hover:text-white hover:bg-gray-700 rounded-md">
+        <label for="menu-open" id="mobile-menu-button" class="m-2 p-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none">
             <svg id="menu-open-icon" class="h-6 w-6 transition duration-200 ease-in-out" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -24,26 +24,24 @@
         </label>
     </header>
 
-    <aside id="sidebar" class="bg-gray-800 text-gray-100 md:w-64 w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto" data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation">
-        <div class="flex flex-col space-y-6" data-dev-hint="optional div for having an extra footer navigation">
-            <a href="#" class="text-white flex items-center space-x-2 px-4" title="Your App is cool">
+    <aside id="sidebar" class="bg-gray-800 text-gray-100 space-y-6 pt-6 px-0 inset-y-0 left-0 absolute w-3/4 transform overflow-y-auto transition duration-200 ease-in-out md:w-64 md:relative md:translate-x-0 md:flex md:flex-col md:justify-between" data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation">
+        <div class="space-y-6 flex flex-col" data-dev-hint="optional div for having an extra footer navigation">
+            <a href="#" class="text-white space-x-2 px-4 flex items-center" title="Your App is cool">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
-                <span class="text-2xl font-extrabold whitespace-nowrap truncate">Blazor (-_-)</span>
+                <span class="truncate whitespace-nowrap text-2xl font-extrabold">Blazor (-_-)</span>
             </a>
 
         </div>
         <NavMenu />
     </aside>
 
-    <main id="content" class="flex-1 p-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
+    <main id="content" class="p-6 flex-1 lg:px-8">
+        <div class="mx-auto max-w-7xl">
             <!-- Replace with your content -->
             <div class="px-4 py-6 sm:px-0">
-                <div class="border-4 border-dashed border-gray-200 rounded-lg h-96 p-4">
-                    @Body
-                </div>
+                @Body
             </div>
             <!-- /End replace -->
         </div>

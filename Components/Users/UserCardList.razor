@@ -1,0 +1,22 @@
+﻿@using first_blazor_app.Core.Models.Users
+@using first_blazor_app.Shared.Components
+
+@if(Users is null || Users.Count == 0)
+{
+	<div class="my-3">
+        <Alert TextAlert="Users not found :("/>
+	</div>
+	return;
+}
+
+<div class="gap-4 grid grid-cols-4">
+	@foreach (var user in Users)
+	{
+		<UserCard User="user" />
+	}
+</div>
+
+@code {
+	[Parameter]
+	public List<User>? Users { get; set; }
+}

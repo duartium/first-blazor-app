@@ -1,0 +1,17 @@
+﻿@page "/users"
+@using first_blazor_app.Core.Models.Users
+@using first_blazor_app.Shared.Components
+@using first_blazor_app.Components.Users
+
+<UserCardList Users="ActiveUsers" />
+
+@code {
+	private List<User> ActiveUsers = new List<User>
+	{
+		new User("000234789", "bduarte", "Software Engineer"),
+		new User("009898399", "csanz", "Sales"),
+		new User("001192222", "rfazinni", "CEO"),
+		new User("002338838", "cpazmino", "CTO"),
+		new User("001211296", "tmacias", "Account Manager"),
+	};
+}

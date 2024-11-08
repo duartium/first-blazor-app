@@ -1,0 +1,13 @@
+﻿<div class="gap-4 grid grid-cols-4" 
+	@attributes="AdditionalAtributes" 
+>
+	@ChildContent
+</div>
+
+@code {
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public Dictionary<string, object> AdditionalAtributes { get; set; }
+}
